@@ -389,6 +389,15 @@
     }
     .reveal.visible { opacity: 1; transform: none; }
 
+    /* Hide the default Google Calendar button — we use our own */
+    .google-cal-hidden {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+      width: 0; height: 0;
+      overflow: hidden;
+    }
+
     @media (max-width: 768px) {
       nav { padding: 24px; }
       .nav-links { display: none; }
@@ -403,6 +412,7 @@
       footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
     }
   </style>
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
 </head>
 <body>
 
@@ -453,7 +463,12 @@
     </div>
 
     <div class="cta-wrap reveal">
-      <a class="cta-btn" href="#contact"><span>Schedule a meeting with a consultant</span></a>
+      <!-- Hidden Google Calendar anchor — gets loaded by their script -->
+      <span id="gcal-target" class="google-cal-hidden"></span>
+      <!-- Our styled button triggers the hidden one -->
+      <button class="cta-btn" onclick="document.querySelector('#gcal-target a, #gcal-target button') && document.querySelector('#gcal-target a, #gcal-target button').click()">
+        <span>Schedule a meeting with a consultant</span>
+      </button>
       <p class="cta-note">Free 30-minute intro call — no commitment</p>
     </div>
   </div>
@@ -508,6 +523,21 @@
     });
   }, { threshold: 0.15 });
   reveals.forEach(el => observer.observe(el));
+</script>
+
+<script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+<script>
+(function() {
+  var target = document.getElementById('gcal-target');
+  window.addEventListener('load', function() {
+    calendar.schedulingButton.load({
+      url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2os_nTDO16s__BIm9-drIv5yZKPwR-jIhpbAAoJFnT8KY-gNRXTlBd8QP9KB4KH_-AwzeEjqYD?gv=true',
+      color: '#D50000',
+      label: 'Book an appointment',
+      target,
+    });
+  });
+})();
 </script>
 
 </body>
