@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Distorted Studios — Automated Revenue Systems</title>
+  <meta name="description" content="Distorted Studios builds automated revenue systems for ambitious businesses. We engineer growth that runs itself."/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;700;900&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black: #0a0908;
+      --white: #f0ece4;
+      --red: #d63031;
+      --muted: #6b6560;
+      --line: rgba(240,236,228,0.1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.75;
+      cursor: crosshair;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 48px;
+      mix-blend-mode: difference;
+    }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; }
+
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(120px, 22vw, 280px);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(240,236,228,0.06);
+      white-space: nowrap;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 300;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 20px;
+      animation: fadeUp 1s 0.2s both;
+    }
+
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(4rem, 12vw, 10rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      animation: fadeUp 1s 0.4s both;
+    }
+
+    .glitch { position: relative; display: inline-block; }
+    .glitch::before, .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+    .glitch::before {
+      color: var(--red);
+      animation: glitch1 3.5s infinite;
+      clip-path: polygon(0 30%, 100% 30%, 100% 55%, 0 55%);
+    }
+    .glitch::after {
+      color: #00b4d8;
+      animation: glitch2 3.5s infinite;
+      clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+    }
+    @keyframes glitch1 {
+      0%,90%,100% { transform: none; opacity: 0; }
+      91% { transform: translate(-4px, 2px); opacity: 0.8; }
+      93% { transform: translate(4px, -2px); opacity: 0.6; }
+      95% { transform: translate(-2px, 0); opacity: 0.8; }
+      97% { transform: none; opacity: 0; }
+    }
+    @keyframes glitch2 {
+      0%,88%,100% { transform: none; opacity: 0; }
+      89% { transform: translate(5px, -3px); opacity: 0.7; }
+      91% { transform: translate(-3px, 2px); opacity: 0.5; }
+      93% { transform: none; opacity: 0; }
+    }
+
+    .hero-sub {
+      max-width: 520px;
+      margin-top: 36px;
+      font-size: 1rem;
+      color: rgba(240,236,228,0.55);
+      font-style: italic;
+      animation: fadeUp 1s 0.7s both;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      right: 48px; bottom: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      animation: fadeUp 1s 1s both;
+    }
+    .hero-scroll span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      writing-mode: vertical-rl;
+    }
+    .scroll-line {
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, var(--red), transparent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+    .divider { height: 1px; background: var(--line); margin: 0 48px; }
+
+    #about {
+      padding: 120px 48px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--red);
+      padding-top: 6px;
+    }
+    .about-content h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      line-height: 1.1;
+      margin-bottom: 32px;
+    }
+    .about-content p {
+      color: rgba(240,236,228,0.7);
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+    .about-content p strong {
+      color: var(--white);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .stats {
+      display: flex;
+      margin-top: 60px;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+    .stat {
+      flex: 1;
+      padding: 32px 28px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .stat-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 2.8rem;
+      line-height: 1;
+    }
+    .stat-number em { color: var(--red); font-style: normal; }
+    .stat-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .cta-wrap { margin-top: 52px; }
+    .cta-btn {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--white);
+      padding: 20px 44px;
+      text-decoration: none;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.3s;
+    }
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--red);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 0;
+    }
+    .cta-btn:hover::after { transform: translateX(0); }
+    .cta-btn:hover { color: var(--white); }
+    .cta-btn span { position: relative; z-index: 1; }
+    .cta-note {
+      margin-top: 14px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    #contact {
+      padding: 120px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    #contact::before {
+      content: 'CONTACT';
+      position: absolute;
+      bottom: -30px; right: -20px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(80px, 15vw, 180px);
+      text-transform: uppercase;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(240,236,228,0.04);
+      user-select: none;
+      pointer-events: none;
+    }
+    .contact-header {
+      display: flex;
+      gap: 80px;
+      align-items: flex-start;
+      margin-bottom: 80px;
+    }
+    #contact h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 8vw, 7rem);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 0.9;
+    }
+    #contact h2 em { color: var(--red); font-style: normal; }
+    .contact-intro {
+      max-width: 320px;
+      padding-top: 12px;
+      color: rgba(240,236,228,0.55);
+      font-style: italic;
+      font-size: 0.95rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .contact-item {
+      background: var(--black);
+      padding: 40px;
+      transition: background 0.3s;
+    }
+    .contact-item:hover { background: #111110; }
+    .contact-item-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+    .contact-item-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 0.05em;
+    }
+    .contact-item-value a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-item-value a:hover { color: var(--red); }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--white); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 24px; }
+      .nav-links { display: none; }
+      #hero { padding: 0 24px 50px; }
+      .hero-scroll { display: none; }
+      #about { grid-template-columns: 1fr; gap: 32px; padding: 80px 24px; }
+      .stats { flex-direction: column; }
+      #contact { padding: 80px 24px; }
+      .contact-header { flex-direction: column; gap: 24px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .divider { margin: 0 24px; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">DS</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg-text">Revenue</div>
+  <div class="hero-tag">Automated Revenue Systems — Copenhagen</div>
+  <h1>
+    <span class="glitch" data-text="Distorted">Distorted</span><br>
+    Studios
+  </h1>
+  <p class="hero-sub">We build revenue systems that run 24/7 — automated, scalable, and engineered to grow your business without adding headcount.</p>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="about">
+  <div class="section-label reveal">About</div>
+  <div class="about-content">
+    <h2 class="reveal">Revenue that<br>runs itself</h2>
+    <p class="reveal">Distorted Studios is a <strong>Copenhagen-based automation studio</strong> that engineers end-to-end revenue systems for ambitious businesses. We build the pipelines, workflows, and automations that turn your operation into a machine that generates income — predictably and at scale.</p>
+    <p class="reveal">We don't consult and walk away. We <strong>build, deploy, and hand you something that works</strong> the moment we're done — and keeps working long after.</p>
+
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="stat-number">24<em>/7</em></div>
+        <div class="stat-label">Always running</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">100<em>%</em></div>
+        <div class="stat-label">Automated</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">0</div>
+        <div class="stat-label">Manual effort needed</div>
+      </div>
+    </div>
+
+    <div class="cta-wrap reveal">
+      <a class="cta-btn" href="#contact"><span>Schedule a meeting with a consultant</span></a>
+      <p class="cta-note">Free 30-minute intro call — no commitment</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="contact">
+  <div class="contact-header">
+    <h2 class="reveal">Let's<br>build<br><em>yours.</em></h2>
+    <p class="contact-intro reveal">Ready to install a revenue system in your business? Reach out and let's talk about what's possible.</p>
+  </div>
+
+  <div class="contact-grid reveal">
+    <div class="contact-item">
+      <div class="contact-item-label">Email us</div>
+      <div class="contact-item-value">
+        <a href="mailto:fm@distortedstudios.dk">fm@distortedstudios.dk</a>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">Based in</div>
+      <div class="contact-item-value">Copenhagen, Denmark</div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">Web</div>
+      <div class="contact-item-value">
+        <a href="https://distortedstudios.dk">distortedstudios.dk</a>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">Currently</div>
+      <div class="contact-item-value">Taking new clients</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© <span id="yr"></span> Distorted Studios</p>
+  <p><a href="/privacy-policy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
