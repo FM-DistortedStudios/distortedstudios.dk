@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pinterest Privacy Policy — Distorted Studios</title>
+  <meta name="description" content="Pinterest API Privacy Policy for Distorted Studios. How we access and protect your Pinterest account data."/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;700;900&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black: #0a0908;
+      --white: #f0ece4;
+      --red: #d63031;
+      --muted: #6b6560;
+      --line: rgba(240,236,228,0.1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 16px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 999;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 48px;
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-back {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 300;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--white); }
+    header {
+      padding: 80px 48px 60px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: 'PINTEREST';
+      position: absolute;
+      bottom: -20px; right: -10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(60px, 12vw, 140px);
+      text-transform: uppercase;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(240,236,228,0.04);
+      user-select: none;
+      pointer-events: none;
+    }
+    .header-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+    header h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 0.9;
+      margin-bottom: 24px;
+    }
+    header p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 80px 48px 100px;
+    }
+    .intro {
+      border-left: 2px solid var(--red);
+      padding: 20px 28px;
+      margin-bottom: 64px;
+      color: rgba(240,236,228,0.6);
+      font-style: italic;
+      font-size: 0.95rem;
+    }
+    section {
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--line);
+    }
+    section:last-of-type { border-bottom: none; }
+    .section-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    p {
+      color: rgba(240,236,228,0.7);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+    p strong { color: var(--white); font-weight: 400; font-style: italic; }
+    ul { list-style: none; padding: 0; margin-bottom: 16px; }
+    ul li {
+      position: relative;
+      padding-left: 20px;
+      color: rgba(240,236,228,0.7);
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    ul li::before { content: '—'; position: absolute; left: 0; color: var(--red); }
+    a { color: var(--red); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .highlight {
+      background: rgba(240,236,228,0.03);
+      border: 1px solid var(--line);
+      padding: 24px 28px;
+      margin: 16px 0;
+      font-size: 0.95rem;
+      color: rgba(240,236,228,0.6);
+      font-style: italic;
+    }
+    .contact-block {
+      background: rgba(240,236,228,0.03);
+      border: 1px solid var(--line);
+      padding: 36px 40px;
+      margin-top: 16px;
+    }
+    .contact-block p { margin: 0 0 8px; }
+    .contact-block p:last-child { margin: 0; }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+    }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--white); text-decoration: none; }
+    @media (max-width: 768px) {
+      nav, header { padding: 24px; }
+      main { padding: 48px 24px 80px; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">DS</a>
+  <a class="nav-back" href="/privacy-policy.html">← General Privacy Policy</a>
+</nav>
+
+<header>
+  <div class="header-tag">Pinterest API — Data & Privacy</div>
+  <h1>Pinterest<br>Privacy<br>Policy</h1>
+  <p>Last updated: <span id="date"></span> &nbsp;·&nbsp; Distorted Studios, Copenhagen</p>
+</header>
+
+<main>
+
+  <div class="intro">
+    This policy explains how Distorted Studios accesses and uses data through the Pinterest API. It is written in accordance with the <a href="https://policy.pinterest.com/en/developer-guidelines" target="_blank">Pinterest Developer Guidelines</a> and supplements our <a href="/privacy-policy.html">general Privacy Policy</a>.
+  </div>
+
+  <section>
+    <div class="section-num">01</div>
+    <h2>Who we are</h2>
+    <p>Distorted Studios is a Copenhagen-based studio that builds automated revenue systems for businesses. We use the Pinterest API to provide Pinterest management and advertising services on behalf of our clients.</p>
+    <p>Contact us at <a href="mailto:fm@distortedstudios.dk">fm@distortedstudios.dk</a> for any privacy-related questions.</p>
+  </section>
+
+  <section>
+    <div class="section-num">02</div>
+    <h2>How we access your Pinterest account</h2>
+    <p>We access your Pinterest account exclusively through Pinterest's official <strong>OAuth 2.0 authentication</strong> system. We never ask for, collect, or store your Pinterest password or login credentials.</p>
+    <p>Access is only established with your explicit authorisation. You may revoke our access at any time via your <a href="https://www.pinterest.com/settings/security" target="_blank">Pinterest security settings</a>.</p>
+  </section>
+
+  <section>
+    <div class="section-num">03</div>
+    <h2>What data we access</h2>
+    <p>Depending on the services you engage us for, we may request access to the following Pinterest API scopes on your behalf:</p>
+    <ul>
+      <li><strong>Boards & Pins</strong> — to read and manage your Pinterest boards and pins</li>
+      <li><strong>Catalogs</strong> — to read and manage your product catalog listings</li>
+      <li><strong>Ads & campaigns</strong> — to read and manage your Pinterest advertising campaigns and performance data</li>
+      <li><strong>Account information</strong> — your basic Pinterest profile details, used solely to identify your account</li>
+      <li><strong>Analytics</strong> — campaign performance data relating to your own account</li>
+    </ul>
+    <p>We request only the minimum permissions required to deliver the services you have specifically requested.</p>
+  </section>
+
+  <section>
+    <div class="section-num">04</div>
+    <h2>Data storage</h2>
+    <p>In accordance with Pinterest's Developer Guidelines, <strong>we do not store data retrieved from the Pinterest API</strong>, with the exception of campaign analytics data relating to your own account.</p>
+    <p>Each time our platform needs to display or act on Pinterest information, it calls the Pinterest API directly in real time. No Pinterest account data is cached or retained on our servers beyond what is technically necessary to complete each individual request.</p>
+    <div class="highlight">
+      The only Pinterest data we retain is campaign analytics for your own account, as permitted by Pinterest's Developer Guidelines.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-num">05</div>
+    <h2>How we use your data</h2>
+    <p>Your Pinterest data is used <strong>solely to provide services to you</strong>. Specifically:</p>
+    <ul>
+      <li>To manage boards, pins, catalogs, and ad campaigns on your behalf</li>
+      <li>To report on the performance of your Pinterest advertising</li>
+      <li>To carry out actions on Pinterest that you have explicitly requested and consented to</li>
+    </ul>
+    <p>We do not combine your Pinterest account data with data from any other person's account or from any other service. Every action taken through the API is performed on your account, for your benefit, based on your instructions.</p>
+  </section>
+
+  <section>
+    <div class="section-num">06</div>
+    <h2>User consent & actions</h2>
+    <p>In line with Pinterest's Developer Guidelines, <strong>no action is taken on your Pinterest account without your specific knowledge and consent</strong>. This includes creating or editing pins, managing boards, adjusting campaigns, or any other account action.</p>
+    <p>You remain responsible for the actions taken on your Pinterest account. We do not offer features that automatically initiate actions without your deliberate instruction for each action.</p>
+  </section>
+
+  <section>
+    <div class="section-num">07</div>
+    <h2>Data sharing & third parties</h2>
+    <p>We do not sell, share, or transfer your Pinterest data to any third party, including other advertising networks, data brokers, or any other monetisation service.</p>
+    <p>We do not use information from your Pinterest account to target you or anyone else with advertising outside of Pinterest.</p>
+  </section>
+
+  <section>
+    <div class="section-num">08</div>
+    <h2>Advertising services</h2>
+    <p>Where we manage Pinterest advertising on your behalf, we comply fully with Pinterest's <a href="https://policy.pinterest.com/ad-data-terms" target="_blank">Ad Data Terms</a> and <a href="https://policy.pinterest.com/en/advertising-guidelines" target="_blank">Advertising Guidelines</a>. This includes:</p>
+    <ul>
+      <li>Using Pinterest ad data exclusively to serve and evaluate the performance of ads on Pinterest</li>
+      <li>Presenting Pinterest fees and our own fees clearly and separately</li>
+      <li>Reporting attribution metrics in accordance with Pinterest's requirements</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-num">09</div>
+    <h2>Security</h2>
+    <p>We keep our API access credentials private and do not share them with any third party. We apply appropriate technical measures to protect any data processed in connection with our Pinterest integration, including encrypted transmission via HTTPS and restricted internal access controls.</p>
+  </section>
+
+  <section>
+    <div class="section-num">10</div>
+    <h2>Your rights & revoking access</h2>
+    <p>You can disconnect our access to your Pinterest account at any time by:</p>
+    <ul>
+      <li>Contacting us at <a href="mailto:fm@distortedstudios.dk">fm@distortedstudios.dk</a></li>
+      <li>Revoking access directly via your <a href="https://www.pinterest.com/settings/security" target="_blank">Pinterest account security settings</a></li>
+    </ul>
+    <p>Upon disconnection, we will immediately cease any API calls to your account and delete any retained campaign analytics data within 30 days.</p>
+  </section>
+
+  <section>
+    <div class="section-num">11</div>
+    <h2>Pinterest's own policies</h2>
+    <p>Your use of Pinterest is governed by Pinterest's own <a href="https://policy.pinterest.com/en/terms-of-service" target="_blank">Terms of Service</a> and <a href="https://policy.pinterest.com/privacy-policy" target="_blank">Privacy Policy</a>. Our use of the Pinterest API is governed by the <a href="https://developers.pinterest.com/terms/" target="_blank">Pinterest Developer and API Terms of Service</a> and the <a href="https://policy.pinterest.com/en/developer-guidelines" target="_blank">Pinterest Developer Guidelines</a>.</p>
+  </section>
+
+  <section>
+    <div class="section-num">12</div>
+    <h2>Changes to this policy</h2>
+    <p>We may update this policy to reflect changes in our services or Pinterest's platform requirements. Updates will be reflected with a revised date at the top of this page.</p>
+  </section>
+
+  <section>
+    <div class="section-num">13</div>
+    <h2>Contact us</h2>
+    <p>For any questions relating to this Pinterest Privacy Policy or our use of the Pinterest API:</p>
+    <div class="contact-block">
+      <p><strong>Distorted Studios</strong></p>
+      <p>Copenhagen, Denmark</p>
+      <p><a href="mailto:fm@distortedstudios.dk">fm@distortedstudios.dk</a></p>
+      <p><a href="https://distortedstudios.dk">distortedstudios.dk</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© <span id="yr"></span> Distorted Studios</p>
+  <p><a href="/privacy-policy.html">General Privacy Policy</a></p>
+</footer>
+
+<script>
+  const now = new Date();
+  document.getElementById('date').textContent = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  document.getElementById('yr').textContent = now.getFullYear();
+</script>
+
+</body>
+</html>
